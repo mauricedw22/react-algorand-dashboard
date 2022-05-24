@@ -3,13 +3,21 @@ import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <div>
-      <Navbar></Navbar>
-      <Footer></Footer>
-    </div>
+    <Router>
+      <div>
+        <Navbar></Navbar>
+          <Routes>
+            <Route>
+
+            </Route>
+          </Routes>
+        <Footer></Footer>
+      </div>
+    </Router>
     
   );
 }
