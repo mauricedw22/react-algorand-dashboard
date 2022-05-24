@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import AlgoBlockData from './charts/AlgoBlockData';
+import AlgoCharts from './charts/AlgoCharts';
 import Sample from './charts/Sample';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -16,8 +16,8 @@ function App() {
         <Navbar />
           <div className="content">
             <Routes>
-              
-              <Route path="/" element={<AlgoBlockData />} />
+
+              <Route path="/" element={<AlgoCharts />} />
                 
               <Route path="/test" element={<Sample />} />
                 
