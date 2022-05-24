@@ -1,14 +1,14 @@
 import React from 'react';
 
-const AlgoBlockData = () => {
+const Sample = () => {
 
     return (
         <React.Fragment>
             <div>
-                <h1>Hello React World!</h1>
+                <h2>Page 2 here...</h2>
             </div>
         </React.Fragment>        
     );
 };
 
-export default AlgoBlockData
+export default Sample
