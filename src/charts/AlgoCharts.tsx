@@ -1,6 +1,8 @@
 import React from 'react';
 import AlgoBlockData from './AlgoBlockData';
 
+let url = "https://algoindexer.algoexplorerapi.io/v2/health";
+
 const AlgoCharts = () => {
 
     return (
