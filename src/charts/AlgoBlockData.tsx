@@ -1,11 +1,11 @@
 import React from 'react';
 
-const AlgoBlockData = () => {
+const AlgoBlockData = (props:any) => {
 
     return (
         <React.Fragment>
             <div>
-                <h1>Hello React World!</h1>
+                <h1>{props.round}</h1>
             </div>
         </React.Fragment>        
     );
