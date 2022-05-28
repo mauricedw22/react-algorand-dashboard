@@ -9,6 +9,17 @@ import Sample from './charts/Sample';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
+
+  // const [algoRoundData, setAlgoRoundData] = useState([])
+
+  // React.useEffect(() => {
+  //   const url = "https://algoindexer.algoexplorerapi.io/health";
+  //   fetch(url)
+  //       .then((response) => response.json())
+  //       .then((json) => setAlgoRoundData(json))
+  //       .catch((error) => console.log(error)); 
+  // },[]);
+
   return (
 
     <Router>

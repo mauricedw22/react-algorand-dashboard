@@ -4,22 +4,29 @@ import AlgoBlockData from './AlgoBlockData';
 const AlgoCharts = () => {
 
     const [isLoading, setIsLoading] = React.useState(true);
-    const [data, setData] = React.useState([]);
+    const [algoRoundData, setAlgoRoundData] = React.useState();
+    // const [algoTxnData, setAlgoTxnData] = React.useState();
 
     React.useEffect(() => {
         const url = "https://algoindexer.algoexplorerapi.io/health";
         fetch(url)
             .then((response) => response.json())
-            .then((json) => setData(json))
+            .then((json) => setAlgoRoundData(json))
             .catch((error) => console.log(error)); 
     },[]);
 
     React.useEffect(() => {
-        if(data.length !==0) {
+        if(algoRoundData) {
             setIsLoading(false);
-        }
-        console.log(data);
-    },[data]);
+            const algoRound = algoRoundData["round"];
+            console.log(algoRound);
+            // let url2 = "https://algoindexer.algoexplorerapi.io/v2/blocks/" + algoRound;
+            // fetch(url2)
+            //     .then((response) => response.json())
+            //     .then((json) => setAlgoRoundData(json))
+            //     .catch((error) => console.log(error));
+        }  
+    },[algoRoundData]);
 
     return (
         <React.Fragment>
@@ -28,7 +35,7 @@ const AlgoCharts = () => {
                 {isLoading ? (
                         <h1>Loading...</h1>
                     ): (
-                        <AlgoBlockData {...data} />
+                        <AlgoBlockData {...algoRoundData} />
                     )
                 }              
             </div>            
