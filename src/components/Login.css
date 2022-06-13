@@ -1,0 +1,16 @@
+
+.block {
+    display: block;
+}
+
+.fields {
+    display: block;
+    border: 1px solid block;
+}
+
+.sub {
+    background: blue;
+    border: 1px solid gold;
+    color: white;
+    width: 6%;
+}

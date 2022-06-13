@@ -23,12 +23,13 @@ const Signup = () => {
 
             console.log("Cognito username after signup: " + output.user.username);
             // window.location("/");
-            navigate("/");
+            navigate("/login");
         });
     }
 
     return (
         <React.Fragment>
+            <h1>Sign Up</h1>
             <form onSubmit={onSubmit}>
                 <div className="block">
                     <label htmlFor="email">Email</label>
