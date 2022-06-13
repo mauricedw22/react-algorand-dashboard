@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { CognitoUser, CognitoUserAttributes, CognitoUserPool, AuthenticationDetails } from 'amazon-cognito-identity-js';
 import UserPool from '../services/UserPool';
+import './Login.css';
 // import * from AWS as 'aws-sdk/global';
 
 const Login = () => {
@@ -31,6 +32,17 @@ const Login = () => {
         cognitoUser.authenticateUser(authenticationDetails, {
             onSuccess: function(result) {
                 console.log(result.getAccessToken().getJwtToken());
+                
+                cognitoUser.getUserAttributes(function(err, result){
+                    if(err) {
+                        alert( err.message || JSON.stringify(err));
+                    }
+
+                    if(result[2].getName()==="email") {
+                        console.log('EMAIL USERNAME: ' + result[2].getValue());
+                    }                    
+                });
+
                 navigate("/");
             },
             onFailure: function(err) {
@@ -63,6 +75,7 @@ const Login = () => {
                 </div>
 
                 <button className="sub" type="submit">Login</button>
+                <Link to="/signup"><button className="subs">Signup</button></Link>
             </form>
         </React.Fragment>        
     );

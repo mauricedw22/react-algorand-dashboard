@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './SignUp.css';
 import UserPool from '../services/UserPool';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const Signup = () => {
 
@@ -48,7 +48,8 @@ const Signup = () => {
                     ></input>
                 </div>
                 
-                <button className="sub" type="submit">Submit</button>
+                <button className="subs" type="submit">Signup</button>
+                <Link to="/login"><button className="sub" type="submit">Login</button></Link>
             </form>
 
             {}

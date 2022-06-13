@@ -1,5 +1,7 @@
 import React from 'react';
+import { CognitoUser } from 'amazon-cognito-identity-js';
 import AlgoBlockData from './AlgoBlockData';
+import UserPool from '../services/UserPool';
 
 const AlgoCharts = () => {
 
