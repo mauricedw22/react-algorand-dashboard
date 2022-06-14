@@ -14,3 +14,8 @@
     color: white;
     width: 6%;
 }
+
+.errors {
+    color: red;
+    display:block;
+}

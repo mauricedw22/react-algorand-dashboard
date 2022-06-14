@@ -12,6 +12,8 @@ const Login = () => {
     const [ email, setEmail ] = useState("");
     const [ password, setPassword ] = useState("");
 
+    let errorMsg;
+
     // User Login details from form
     let authenticationData = {
         Username: email,
@@ -44,7 +46,7 @@ const Login = () => {
                         if(typeof(Storage)!=="undefined"){
                             sessionStorage.setItem("email", result[2].getValue());
                         } else {
-                            
+
                         }                        
                     }                    
                 });
@@ -52,7 +54,10 @@ const Login = () => {
                 navigate("/");
             },
             onFailure: function(err) {
-                alert(err.message || JSON.stringify(err))
+                errorMsg = err.message || JSON.stringify(err);
+                console.log(errorMsg)
+                document.getElementById("form_error").innerHTML = errorMsg;
+                // alert(err.message || JSON.stringify(err))
             },
         })
     }
@@ -64,6 +69,7 @@ const Login = () => {
                 <div className="block">
                     <label htmlFor="email">Email</label>
                     <input
+                        type="email"
                         className="fields"
                         value={email}
                         onChange={(event) => setEmail(event.target.value)}
@@ -73,12 +79,15 @@ const Login = () => {
                 <div className="block">
                     <label htmlFor="password">Password</label>
                     <input
+                        type="password"
                         className="fields"
                         value={password}
                         onChange={(event) => setPassword(event.target.value)}
                     >
                     </input>
                 </div>
+
+                <span id="form_error" className="errors">{ errorMsg }</span>
 
                 <button className="sub" type="submit">Login</button>
                 <Link to="/signup"><button className="subs">Signup</button></Link>
