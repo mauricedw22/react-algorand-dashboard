@@ -40,6 +40,12 @@ const Login = () => {
 
                     if(result[2].getName()==="email") {
                         console.log('EMAIL USERNAME: ' + result[2].getValue());
+
+                        if(typeof(Storage)!=="undefined"){
+                            sessionStorage.setItem("email", result[2].getValue());
+                        } else {
+                            
+                        }                        
                     }                    
                 });
 

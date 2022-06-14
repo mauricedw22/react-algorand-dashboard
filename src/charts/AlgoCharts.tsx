@@ -5,6 +5,12 @@ import UserPool from '../services/UserPool';
 
 const AlgoCharts = () => {
 
+    let email_address;
+
+    if(typeof(Storage)!=="undefined"){
+        email_address = sessionStorage.getItem("email");
+    }    
+
     const [isLoading, setIsLoading] = React.useState(true);
     const [algoRoundData, setAlgoRoundData] = React.useState();
     // const [algoTxnData, setAlgoTxnData] = React.useState();
@@ -32,7 +38,7 @@ const AlgoCharts = () => {
 
     return (
         <React.Fragment>
-            <h1>Welcome to React Algo Charts!</h1>
+            <h1>Welcome, { email_address }, to React Algo Charts!</h1>
             <div>
                 {isLoading ? (
                         <h1>Loading...</h1>
