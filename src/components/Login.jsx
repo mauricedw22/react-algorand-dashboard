@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { CognitoUser, CognitoUserAttributes, CognitoUserPool, AuthenticationDetails } from 'amazon-cognito-identity-js';
-import UserPool from '../services/UserPool';
+import { AccountContext } from './Account';
 import './Login.css';
 // import * from AWS as 'aws-sdk/global';
 
@@ -12,55 +11,24 @@ const Login = () => {
     const [ email, setEmail ] = useState("");
     const [ password, setPassword ] = useState("");
 
-    let errorMsg;
-
-    // User Login details from form
-    let authenticationData = {
-        Username: email,
-        Password: password
-    }
-
-    let authenticationDetails = new AuthenticationDetails(authenticationData);
-
-    let userData = {
-        Username: email,
-        Pool: UserPool
-    }
-
-    let cognitoUser = new CognitoUser(userData);
+    const { authenticate } = useContext(AccountContext);
 
     const onLogin = (event) => {
         event.preventDefault();
-        cognitoUser.authenticateUser(authenticationDetails, {
-            onSuccess: function(result) {
-                console.log(result.getAccessToken().getJwtToken());
-                
-                cognitoUser.getUserAttributes(function(err, result){
-                    if(err) {
-                        alert( err.message || JSON.stringify(err));
-                    }
-
-                    if(result[2].getName()==="email") {
-                        console.log('EMAIL USERNAME: ' + result[2].getValue());
-
-                        if(typeof(Storage)!=="undefined"){
-                            sessionStorage.setItem("email", result[2].getValue());
-                        } else {
-
-                        }                        
-                    }                    
-                });
-
+        
+        authenticate(email, password)
+            .then((data) => {
+                console.log("Successful Login:  ", data);
+                sessionStorage.setItem("email", email);
                 navigate("/");
-            },
-            onFailure: function(err) {
-                errorMsg = err.message || JSON.stringify(err);
-                console.log(errorMsg)
-                document.getElementById("form_error").innerHTML = errorMsg;
-                // alert(err.message || JSON.stringify(err))
-            },
-        })
-    }
+
+                // To reload navbar with isLoggedIn state updated
+                window.location.reload(false);
+            })
+            .catch((err) => {
+                console.error("Failed to login: ", err);
+            })
+    };
 
     return (
         <React.Fragment>
@@ -87,7 +55,7 @@ const Login = () => {
                     </input>
                 </div>
 
-                <span id="form_error" className="errors">{ errorMsg }</span>
+                <span className="form_error"></span>
 
                 <button className="sub" type="submit">Login</button>
                 <Link to="/signup"><button className="subs">Signup</button></Link>

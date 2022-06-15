@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { CognitoUser } from 'amazon-cognito-identity-js';
 import AlgoBlockData from './AlgoBlockData';
 import UserPool from '../services/UserPool';
@@ -7,9 +7,24 @@ const AlgoCharts = () => {
 
     let email_address;
 
-    if(typeof(Storage)!=="undefined"){
+    if(sessionStorage.getItem("email")){
         email_address = sessionStorage.getItem("email");
     }    
+
+    // const logout = () => {
+
+    //     let userData = {
+    //         Username: email,
+    //         Pool: UserPool
+    //     }
+
+    //     let cognitoUser = new CognitoUser(userData);
+
+    //     cognitoUser.signOut();
+
+    //     navigate("/login");
+
+    // } 
 
     const [isLoading, setIsLoading] = React.useState(true);
     const [algoRoundData, setAlgoRoundData] = React.useState();

@@ -1,8 +1,39 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { AccountContext } from './Account';
 import AlgoLogo from '../assets/algorand_full_logo_white.png';
 import './Navbar.css';
 
 const Navbar = () => {
+
+    let navigate = useNavigate();
+
+    let [ isLoggedIn, setIsLoggedIn ] = useState(false);
+
+    const { getSession, logout } = useContext(AccountContext);
+
+    React.useEffect(() => {
+        getSession()
+            .then((session:string) => {
+                console.log("Session: ", session);
+                setIsLoggedIn(true);
+            })
+    },[]);
+
+    // const logout = () => {
+
+    //     let userData = {
+    //         Username: email,
+    //         Pool: UserPool
+    //     }
+
+    //     let cognitoUser = new CognitoUser(userData);
+
+    //     cognitoUser.signOut();
+
+    //     navigate("/login");
+
+    // }    
 
     return (
         <React.Fragment>
@@ -17,10 +48,46 @@ const Navbar = () => {
                         <img className="logo" src={AlgoLogo} width="150" height="75" />
                         <ul className="navbar-nav mr-auto flex flex-row">
                             <li className="nav-item">
-                                <a className="nav-link block pr-2 lg:px-2 py-2 text-white hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="light">
-                                    On-Chain Data
-                                </a>
+                                <Link to="/">
+                                    <p className="nav-link pr-2 lg:px-2 py-2 text-white hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out">
+                                        Home
+                                    </p>
+                                </Link>
                             </li>
+                                
+                                { isLoggedIn ? (
+
+                                        <li onClick={logout} className="nav-item">
+                                            <p className="nav-link pr-2 lg:px-2 py-2 text-white hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out">
+                                                    Logout
+                                            </p>                                            
+                                        </li>
+
+                                    ) : (
+
+                                        <ul className="navbar-nav mr-auto flex flex-row">
+                                            <li className="nav-item">
+                                                <Link to="/signup">
+                                                    <p className="nav-link pr-2 lg:px-2 py-2 text-white hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out">
+                                                        Sign Up
+                                                    </p>
+                                                </Link>
+                                            </li>
+
+                                            <li className="nav-item">
+                                                <Link to="/login">
+                                                    <p className="nav-link pr-2 lg:px-2 py-2 text-white hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out">
+                                                        Login
+                                                    </p>
+                                                </Link>
+                                            </li>
+                                        </ul>                                        
+
+                                    ) 
+                                
+                                }                              
+                                
+                            
                         </ul>
                     </div>
                 </div>

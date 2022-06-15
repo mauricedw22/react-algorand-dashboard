@@ -34,6 +34,7 @@ const Signup = () => {
                 <div className="block">
                     <label htmlFor="email">Email</label>
                     <input
+                        type="email"
                         className="fields"
                         value={email}
                         onChange={(event) => setEmail(event.target.value)}
@@ -42,6 +43,7 @@ const Signup = () => {
                 <div className="block">
                     <label htmlFor="password">Password</label>
                     <input
+                        type="password"
                         className="fields"
                         value={password}
                         onChange={(event) => setPassword(event.target.value)}

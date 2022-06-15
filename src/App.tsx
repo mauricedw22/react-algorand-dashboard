@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
+import { Account } from './components/Account';
 import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/Navbar';
@@ -15,7 +16,7 @@ function App() {
   return (
 
     <Router>
-      <div>
+      <Account>
         <Navbar />
           <div className="content">
             <Routes>
@@ -31,7 +32,7 @@ function App() {
             </Routes>
           </div>          
         <Footer />
-      </div>
+      </Account>
     </Router>
     
   );
