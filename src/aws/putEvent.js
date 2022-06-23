@@ -7,7 +7,7 @@ export const params = {
             Detail: '{"key1":"value1","key2":"value2","married":"true"}',
             DetailType: "appEventCreated",
             Resources:[
-                "", // RESOURCE_ARN
+                "", // RESOURCE_ARN for EventBus
             ],
             Source: "sample react web client"
         }
