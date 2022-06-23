@@ -2,9 +2,12 @@
   "name": "react-app-example",
   "version": "0.1.0",
   "private": true,
-  "type":"module",
+  "type": "module",
   "dependencies": {
+    "@aws-sdk/client-cognito-identity": "^3.112.0",
     "@aws-sdk/client-eventbridge": "^3.112.0",
+    "@aws-sdk/client-lambda": "^3.112.0",
+    "@aws-sdk/credential-provider-cognito-identity": "^3.112.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^13.5.0",
