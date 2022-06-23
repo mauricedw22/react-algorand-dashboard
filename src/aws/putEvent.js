@@ -13,3 +13,15 @@ export const params = {
         }
     ]
 }
+
+export const run = async() => {
+    try {
+        const data = await ebClient.send(new PutEventsCommand(params));
+        console.log("Success - Event sent! Requiest id: ", data);
+        return data;
+    } catch (err) {
+        console.log("Error", err);
+    }
+}
+
+run();
