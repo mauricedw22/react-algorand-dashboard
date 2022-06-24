@@ -1,0 +1,14 @@
+{
+    "transactions": [
+        {
+            "transType": "PURCHASE",
+            "amount": 5.07,
+            "name":"Maurice Walker"
+        },
+        {
+            "transType": "REFUND",
+            "amount": 25.00,
+            "name":"Mauriceiz Zaddy"
+        }
+    ]
+}
