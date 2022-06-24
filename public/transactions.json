@@ -3,12 +3,14 @@
         {
             "transType": "PURCHASE",
             "amount": 5.07,
-            "name":"Maurice Walker"
+            "name":"Maurice Walker",
+            "age":"34"
         },
         {
             "transType": "REFUND",
             "amount": 25.00,
-            "name":"Mauriceiz Zaddy"
+            "name":"Mauriceiz Zaddy",
+            "age":"Prime"
         }
     ]
 }
