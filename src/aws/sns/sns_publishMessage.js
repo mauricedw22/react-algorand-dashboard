@@ -1,9 +1,9 @@
 import { PublishCommand } from "@aws-sdk/client-sns";
-import { snsClient } from "./snsClient";
+import { snsClient } from "./snsClient.js";
 
 var params = {
-    Message: "",
-    TopicArn:""
+    Message: "This is a test msg from the React client!!!",
+    TopicArn:"<TOPIC_ARN>"
 };
 
 const run = async() => {
